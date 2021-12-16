@@ -1,15 +1,12 @@
 import { CustomOperation } from './custom-number.types'
 
-export type BigNumber = any
+export type BigNumber = string
 
 const fromString = (s: string): BigNumber => {
-  const n = parseInt(s)
-
-  if (isNaN(n)) {
+  if (isNaN(parseInt(s))) {
     throw new Error('Not a number')
   }
-
-  return n
+  return s
 }
 
 const add = (n1: BigNumber, n2: BigNumber): BigNumber => {
@@ -70,13 +67,7 @@ const multiply = (n1: BigNumber, n2: BigNumber): BigNumber => {
   return result
 }
 
-const toString = (n: BigNumber) => {
-  let numberString: string = ''
-
-  Array.from(String(n), (number: string) => (numberString += number))
-
-  return numberString
-}
+const toString = (n: BigNumber): string => n
 
 export const BigNumberOperation: CustomOperation<BigNumber> = {
   fromString,
